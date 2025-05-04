@@ -64,12 +64,26 @@ const generateId = () => {
   const maxId = Math.floor(Math.random() * 1000);
   return maxId;
 };
+
 app.post("/api/persons", (request, response) => {
   const body = request.body;
 
   if (!body.name) {
     return response.status(400).json({
-      error: "content missing",
+      error: "name missing",
+    });
+  }
+  if (!body.number) {
+    return response.status(400).json({
+      error: "number missing",
+    });
+  }
+  const found = persons.find((element) => element.name === body.name);
+  console.log(found);
+
+  if (found) {
+    return response.status(400).json({
+      error: "name must be unique",
     });
   }
 
