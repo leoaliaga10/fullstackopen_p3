@@ -34,7 +34,22 @@ let persons = [
 
 app.use(express.json());
 // app.use(requestLogger);
-app.use(morgan("tiny")); // Use the middleware morgan with configuration 'tiny'
+
+//Custom token for the request body
+morgan.token("body", (req) => {
+  if (req.method === "POST") {
+    return JSON.stringify(req.body);
+  } else {
+    return ""; // No show the body for others methods GET, DELETE...
+  }
+});
+
+// Usa el middleware morgan con un formato personalizado
+app.use(
+  morgan(":method :url :status :res[content-length] - :response-time ms :body")
+);
+
+//app.use(morgan("tiny")); // Use the middleware morgan with configuration 'tiny'
 
 //exercise 3.1
 app.get("/api/persons", (request, response) => {
@@ -89,8 +104,6 @@ app.post("/api/persons", (request, response) => {
     });
   }
   const found = persons.find((element) => element.name === body.name);
-  console.log(found);
-
   if (found) {
     return response.status(400).json({
       error: "name must be unique",
