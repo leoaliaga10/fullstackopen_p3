@@ -1,0 +1,30 @@
+# flyctl launch added from .gitignore
+# Ignora archivos del sistema Mac 
+**/.DS_store
+
+# flyctl launch added from phonebook3p/.gitignore
+# Logs
+phonebook3p/**/logs
+phonebook3p/**/*.log
+phonebook3p/**/npm-debug.log*
+phonebook3p/**/yarn-debug.log*
+phonebook3p/**/yarn-error.log*
+phonebook3p/**/pnpm-debug.log*
+phonebook3p/**/lerna-debug.log*
+
+phonebook3p/**/node_modules
+phonebook3p/**/dist
+phonebook3p/**/dist-ssr
+phonebook3p/**/*.local
+
+# Editor directories and files
+phonebook3p/**/.vscode/*
+!phonebook3p/**/.vscode/extensions.json
+phonebook3p/**/.idea
+phonebook3p/**/.DS_Store
+phonebook3p/**/*.suo
+phonebook3p/**/*.ntvs*
+phonebook3p/**/*.njsproj
+phonebook3p/**/*.sln
+phonebook3p/**/*.sw?
+fly.toml
