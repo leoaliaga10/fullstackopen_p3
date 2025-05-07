@@ -1,8 +1,8 @@
-# POST http://localhost:3001/api/persons
-POST https://render-test-5ath.onrender.com/api/persons
+POST http://localhost:3001/api/persons
+# POST https://render-test-5ath.onrender.com/api/persons
 content-type: application/json
 
 {
-    "name": "Maria",
-    "number": "0000001231-12312"
+    "name": "Rosa Isabel",
+    "number": "0012342352312"
 }
