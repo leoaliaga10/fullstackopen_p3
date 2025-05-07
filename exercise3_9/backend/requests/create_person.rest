@@ -3,6 +3,6 @@ POST https://backend-divine-snow-4097.fly.dev/api/persons
 content-type: application/json
 
 {
-    "name": "Rosa La Rumorosa 2",
+    "name": "Rosa La Rumorosa 5865",
     "number": "0012342352312"
 }
