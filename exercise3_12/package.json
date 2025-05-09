@@ -1,0 +1,15 @@
+{
+  "name": "exercise3.12",
+  "version": "1.0.0",
+  "main": "mongo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node mongo.js"
+  },
+  "author": "Leoncio Aliaga",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongoose": "^8.14.2"
+  }
+}
