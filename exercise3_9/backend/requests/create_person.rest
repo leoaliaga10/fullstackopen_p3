@@ -1,8 +1,8 @@
-POST https://backend-divine-snow-4097.fly.dev/api/persons
-//POST http://localhost:3001/api/persons
+//POST https://backend-divine-snow-4097.fly.dev/api/persons
+POST http://localhost:3001/api/persons
 content-type: application/json
 
 {
-    "name": "Rosa La Rumorosa 5865",
+    "name": "Milagros",
     "number": "0012342352312"
 }
