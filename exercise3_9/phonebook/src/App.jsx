@@ -55,7 +55,7 @@ const App = () => {
       name: newName,
       number: newPhone,
       //id: `${getMaxId() + 1}`,
-      id: getMaxId() + 1,
+      // id: getMaxId() + 1,
     };
 
     const getIdByName = (name) =>
