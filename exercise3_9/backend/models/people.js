@@ -23,7 +23,17 @@ const peopleSchema = new mongoose.Schema({
     minLength: 3,
     required: true,
   },
-  number: Number,
+  number: {
+    type: Number, //In my country, telephone numbers are numbers without hyphens.
+    minLength: 8,
+    validate: {
+      validator: function (value) {
+        return value.toString().length >= 8;
+      },
+      message: (props) =>
+        `${props.value} is not a valid phone number! It must have at least 8 digits.`,
+    },
+  },
 });
 
 peopleSchema.set("toJSON", {
