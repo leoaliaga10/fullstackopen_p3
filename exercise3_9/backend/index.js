@@ -70,7 +70,7 @@ const generateId = () => {
   return maxId;
 };
 
-app.post("/api/persons", (request, response) => {
+app.post("/api/persons", (request, response, next) => {
   const body = request.body;
   console.log("body", body);
 
@@ -97,20 +97,32 @@ app.post("/api/persons", (request, response) => {
     id: generateId(),
   });
 
-  person.save().then((savedPerson) => {
-    response.json(savedPerson);
-  });
+  person
+    .save()
+    .then((savedPerson) => {
+      response.json(savedPerson);
+    })
+    .catch((error) => next(error));
 });
 
 app.put("/api/persons/:id", (request, response, next) => {
-  const body = request.body;
+  // const body = request.body;
   const id = request.params.id;
-  const person = {
-    name: body.name,
-    number: body.number,
-  };
+  const { name, number } = request.body;
+  // const person = {
+  //   name: body.name,
+  //   number: body.number,
+  // };
 
-  People.findByIdAndUpdate(id, person, { new: true })
+  People.findByIdAndUpdate(
+    id,
+    { name, number },
+    {
+      new: true,
+      runValidators: true,
+      context: "query",
+    }
+  )
     .then((updatedPerson) => {
       response.json(updatedPerson);
     })

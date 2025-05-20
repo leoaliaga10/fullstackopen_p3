@@ -10,9 +10,12 @@ const getAll = () => {
 
 const create = (newObject) => {
   console.log(newObject);
-
   const request = axios.post(baseUrl, newObject);
-  return request.then((response) => response.data);
+  return request
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error;
+    });
 };
 
 const f_delete = (id) => {

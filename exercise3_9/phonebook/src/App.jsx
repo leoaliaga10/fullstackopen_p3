@@ -85,17 +85,34 @@ const App = () => {
             }, 3000);
           })
         : " "
-      : personsService.create(nameObject).then((returnedName) => {
-          setPersons(persons.concat(returnedName));
-          setTextMessage(`Added ${newName}`);
-          setTimeout(() => {
-            setTextMessage(null);
-          }, 3000);
+      : personsService
+          .create(nameObject)
+          .then((returnedName) => {
+            setPersons(persons.concat(returnedName));
+            setTextMessage(`Added ${newName}`);
+            setTimeout(() => {
+              setTextMessage(null);
+            }, 3000);
 
-          setNewName("");
-        }); //setPersons(persons.concat(nameObject));
+            setNewName("");
+          })
+          .catch((error) => {
+            if (
+              error.response &&
+              error.response.data &&
+              error.response.data.error
+            ) {
+              setTextMessage(error.response.data.error);
+            } else {
+              setTextMessage("Unexpected error occurred");
+            }
+            setClasName("error");
+            setTimeout(() => {
+              setTextMessage(null);
+            }, 5000);
+          });
     //...................
-    // setPersons(persons.concat(nameObject));
+
     setNewName("");
     setNewPhone("");
   };
